@@ -1,65 +1,92 @@
+
+import java.util.Scanner;
+
 public class Menu {
-    switch (opcao) {
-        case 1:
 
-            printf("\n== Cadastro de Aluno ==\n");
+    public static void main(String[] args) {
 
-            float soma;
-            float media;
-            int i;
+        Scanner sc = new Scanner(System.in);
 
+        int opcao;
 
-            if (alunos < 50) {
+        System.out.println("\n======================================");
+        System.out.println("          MENU DA IMPRESSORA");
+        System.out.println("======================================");
 
-                printf("Digite o nome do aluno: ");
-                scanf("%s", nomes[alunos]);
+        System.out.println("1 - Configurar conexao");
+        System.out.println("2 - Abrir conexao");
+        System.out.println("3 - Fechar conexao");
+        System.out.println("4 - Imprimir texto");
+        System.out.println("5 - Imprimir QR Code");
+        System.out.println("6 - Imprimir codigo de barras");
+        System.out.println("7 - Imprimir XML SAT");
+        System.out.println("8 - Imprimir XML de cancelamento SAT");
+        System.out.println("9 - Abrir gaveta");
+        System.out.println("10 - Sinal sonoro (bip)");
+        System.out.println("--------------------------------------");
+        System.out.println("11 - Avancar papel");
+        System.out.println("12 - Status da impressora");
+        System.out.println("======================================");
 
-                printf("Digite a matricula: ");
-                scanf("%i", &matriculas[alunos]);
+        System.out.print("Escolha uma opcao: ");
+        opcao = sc.nextInt();
 
-                for (i = 0; i < 3; i++) {
-                    printf("Digite a nota %i: ", i + 1);
-                    scanf("%i", &notas[alunos][i]);
+        switch (opcao) {
 
-                    soma = notas[alunos][i];
-                }
+            case 1:
+                System.out.println("Configuracao da conexao");
+                System.out.println("Digite o tipo de conexao:");
+                break;
 
+            case 2:
+                System.out.println("Comando DLL: AbreConexaoImpressora");
+                break;
 
+            case 3:
+                System.out.println("Comando DLL: FechaConexaoImpressora");
+                break;
 
-                if(soma >= 6){
-                    printf("\n**Aprovado**\n");
-                }
+            case 4:
+                System.out.println("Comando DLL: ImpressaoTexto");
+                break;
 
-                if(soma <= 5.9){
-                    printf("\n**Reprovado**\n");
-                }
+            case 5:
+                System.out.println("Comando DLL: ImpressaoQRCode");
+                break;
 
+            case 6:
+                System.out.println("Comando DLL: ImpressaoCodigoBarras");
+                break;
 
+            case 7:
+                System.out.println("Comando DLL: ImprimeXMLSAT");
+                break;
 
-                printf("\n A soma total das notas e: %i\n", soma);
+            case 8:
+                System.out.println("Comando DLL: ImprimeXMLCancelamentoSAT");
+                break;
 
-                alunos++;
-                printf("\nAluno cadastrado com sucesso! Total de alunos: %d\n", alunos);
+            case 9:
+                System.out.println("Comando DLL: AbreGaveta");
+                break;
 
-            } else {
-                printf("\nLimite maximo de 50 alunos atingido.\n");
-            }
-            break;
+            case 10:
+                System.out.println("Comando DLL: SinalSonoro");
+                break;
 
-        case 2:
-            printf("\nMostrando alunos cadastrados:\n");
-            break;
-        case 3:
-            printf("Voce escolheu Sair.\n");
-            break;
+            case 11:
+                System.out.println("Comando DLL: AvancaPapel");
+                break;
 
-        default:
-            printf("Opcao invalida.\n");
-            break;
+            case 12:
+                System.out.println("Comando DLL: StatusImpressora");
+                break;
+
+            default:
+                System.out.println("Opcao invalida!");
+                break;
+        }
+
+        sc.close();
     }
-
-	return 0;
 }
-
-}
-
