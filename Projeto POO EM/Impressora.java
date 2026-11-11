@@ -1,9 +1,11 @@
-
 import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Impressora {
+
+    private static final String CAMINHO_XML_SAT = "XMLSAT.xml";
+    private static final String CAMINHO_XML_CANCELAMENTO = "CANC_SAT.xml";
 
     int tipo;
     String modelo;
@@ -32,7 +34,7 @@ public class Impressora {
 
     public void abrirConexao() {
 
-        if (modelo == null || porta == null) {
+        if (modelo == null && porta == null) {
             System.out.println("Configure a impressora primeiro!");
             return;
         }
@@ -137,24 +139,23 @@ public class Impressora {
         );
 
         if (retorno == 0) {
+            ImpressoraDLL.INSTANCE.Corte(5);
             System.out.println("Codigo de barras enviado!");
         } else {
             System.out.println("Erro ao imprimir codigo: " + retorno);
         }
     }
 
-    public void imprimirXMLSAT(Scanner sc) {
+
+    public void imprimirXMLSAT() {
 
         if (conexaoAberta != 1) {
             System.out.println("Conexao fechada. Abra a conexao antes.");
             return;
         }
 
-        System.out.print("Digite o caminho do XML SAT: ");
-        String arquivo = sc.nextLine();
-
         try {
-            String xml = Files.readString(Paths.get(arquivo));
+            String xml = Files.readString(Paths.get(CAMINHO_XML_SAT));
 
             int retorno = ImpressoraDLL.INSTANCE.ImprimeXMLSAT(xml, parametro);
 
@@ -169,6 +170,7 @@ public class Impressora {
         }
     }
 
+    // XML de cancelamento com caminho fixo (a assinatura continua sendo digitada)
     public void imprimirXMLCancelamentoSAT(Scanner sc) {
 
         if (conexaoAberta != 1) {
@@ -176,14 +178,11 @@ public class Impressora {
             return;
         }
 
-        System.out.print("Caminho do XML de cancelamento: ");
-        String arquivo = sc.nextLine();
-
         System.out.print("Assinatura do QR Code: ");
         String assinatura = sc.nextLine();
 
         try {
-            String xml = Files.readString(Paths.get(arquivo));
+            String xml = Files.readString(Paths.get(CAMINHO_XML_CANCELAMENTO));
 
             int retorno = ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(
                     xml, assinatura, parametro

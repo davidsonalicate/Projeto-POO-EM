@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -79,21 +78,21 @@ public class Main {
 
             try {
 
-                opcao = Integer.parseInt(sc.nextLine());
+                opcao = Integer.parseInt(sc.nextLine().trim());
 
                 switch (opcao) {
 
                     case 1:
-                        System.out.print("Tipo de conexao: ");
+                        System.out.print("Tipo de conexao (1 = USB): ");
                         String tipo = sc.nextLine();
 
-                        System.out.print("Modelo da impressora: ");
+                        System.out.print("Modelo da impressora (ex: i9): ");
                         String modelo = sc.nextLine();
 
-                        System.out.print("Porta ou conexao: ");
+                        System.out.print("Porta ou conexao (ex: USB): ");
                         String porta = sc.nextLine();
 
-                        System.out.print("Parametro: ");
+                        System.out.print("Parametro (ex: 0): ");
                         String parametro = sc.nextLine();
 
                         impressora.configurar(tipo, modelo, porta, parametro);
@@ -120,11 +119,20 @@ public class Main {
                         break;
 
                     case 7:
-                        impressora.imprimirXMLSAT(sc);
+                        impressora.imprimirXMLSAT();
                         break;
 
                     case 8:
+
                         impressora.imprimirXMLCancelamentoSAT(sc);
+                        break;
+
+                    case 9:
+                        impressora.abrirGaveta();
+                        break;
+
+                    case 10:
+                        impressora.sinalSonoro();
                         break;
 
                     case 11:
@@ -147,6 +155,10 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println("Digite apenas numeros!");
             }
+        }
+
+        if (impressora.conexaoAberta == 1) {
+            impressora.fecharConexao();
         }
 
         sc.close();
