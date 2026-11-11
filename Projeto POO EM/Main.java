@@ -83,16 +83,16 @@ public class Main {
                 switch (opcao) {
 
                     case 1:
-                        System.out.print("Tipo de conexao (1 = USB): ");
+                        System.out.print("Tipo de conexao: ");
                         String tipo = sc.nextLine();
 
-                        System.out.print("Modelo da impressora (ex: i9): ");
+                        System.out.print("Modelo da impressora: ");
                         String modelo = sc.nextLine();
 
-                        System.out.print("Porta ou conexao (ex: USB): ");
+                        System.out.print("Porta ou conexao: ");
                         String porta = sc.nextLine();
 
-                        System.out.print("Parametro (ex: 0): ");
+                        System.out.print("Parametro: ");
                         String parametro = sc.nextLine();
 
                         impressora.configurar(tipo, modelo, porta, parametro);

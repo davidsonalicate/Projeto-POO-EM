@@ -99,6 +99,7 @@ public class Impressora {
         int retorno = ImpressoraDLL.INSTANCE.ImpressaoTexto(texto, 0, 0, 0);
 
         if (retorno >= 0) {
+            ImpressoraDLL.INSTANCE.Corte(5);
             System.out.println("Texto enviado para impressao!");
         } else {
             System.out.println("Erro ao imprimir texto: " + retorno);
@@ -118,6 +119,7 @@ public class Impressora {
         int retorno = ImpressoraDLL.INSTANCE.ImpressaoQRCode(codigo, 5, 0);
 
         if (retorno == 0) {
+            ImpressoraDLL.INSTANCE.Corte(5);
             System.out.println("QR Code enviado com sucesso!");
         } else {
             System.out.println("Erro ao imprimir QR Code: " + retorno);
@@ -160,6 +162,7 @@ public class Impressora {
             int retorno = ImpressoraDLL.INSTANCE.ImprimeXMLSAT(xml, parametro);
 
             if (retorno == 0) {
+                ImpressoraDLL.INSTANCE.Corte(5);
                 System.out.println("XML SAT enviado com sucesso!");
             } else {
                 System.out.println("Erro ao imprimir XML: " + retorno);
@@ -170,7 +173,6 @@ public class Impressora {
         }
     }
 
-    // XML de cancelamento com caminho fixo (a assinatura continua sendo digitada)
     public void imprimirXMLCancelamentoSAT(Scanner sc) {
 
         if (conexaoAberta != 1) {
@@ -189,6 +191,7 @@ public class Impressora {
             );
 
             if (retorno == 0) {
+                ImpressoraDLL.INSTANCE.Corte(5);
                 System.out.println("XML de cancelamento enviado!");
             } else {
                 System.out.println("Erro ao imprimir XML: " + retorno);
