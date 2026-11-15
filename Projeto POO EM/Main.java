@@ -123,8 +123,7 @@ public class Main {
                         break;
 
                     case 8:
-
-                        impressora.imprimirXMLCancelamentoSAT(sc);
+                        impressora.imprimirXMLCancelamentoSAT();
                         break;
 
                     case 9:
@@ -132,7 +131,7 @@ public class Main {
                         break;
 
                     case 10:
-                        impressora.sinalSonoro();
+                        impressora.sinalSonoro(sc);
                         break;
 
                     case 11:
@@ -140,7 +139,7 @@ public class Main {
                         break;
 
                     case 12:
-                        impressora.statusImpressora();
+                        impressora.statusImpressora(sc);
                         break;
 
                     case 13:
@@ -157,7 +156,7 @@ public class Main {
             }
         }
 
-        if (impressora.conexaoAberta == 1) {
+        if (impressora.conexaoAberta) {
             impressora.fecharConexao();
         }
 
