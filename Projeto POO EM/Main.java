@@ -115,7 +115,7 @@ public class Main {
                         break;
 
                     case 6:
-                        impressora.imprimirCodigoBarras(sc);
+                        impressora.imprimirCodigoBarras();
                         break;
 
                     case 7:

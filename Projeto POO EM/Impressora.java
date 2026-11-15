@@ -59,7 +59,7 @@ public class Impressora {
 
     public void abrirConexao() {
 
-        if (modelo == null || porta == null) {
+        if (modelo == null && porta == null) {
             System.out.println("Configure a impressora primeiro!");
             return;
         }
@@ -168,58 +168,16 @@ public class Impressora {
         }
     }
 
-    public void imprimirCodigoBarras(Scanner sc) {
+    public void imprimirCodigoBarras() {
 
         if (!verificarConexao()) {
             return;
         }
 
-        System.out.println("Tipo de codigo de barras:");
-        System.out.println("1 - UPC-A   (11 ou 12 digitos)");
-        System.out.println("2 - EAN13   (12 ou 13 digitos)");
-        System.out.println("3 - EAN8    (7 ou 8 digitos)");
-        System.out.println("4 - CODE 39 (letras maiusculas, numeros e - . espaco $ / + %)");
-        System.out.println("5 - CODE 128 (texto/numeros)");
-
-        int escolha = lerInteiro(sc, "Escolha o tipo: ", 1, 5);
-
-        int tipoDll;
-        switch (escolha) {
-            case 1:  tipoDll = 0; break;
-            case 2:  tipoDll = 2; break;
-            case 3:  tipoDll = 3; break;
-            case 4:  tipoDll = 4; break;
-            default: tipoDll = 8; break;
-        }
-
-        System.out.print("Digite o codigo de barras: ");
-        String codigo = sc.nextLine().trim();
-
-        if (codigo.isEmpty()) {
-            System.out.println("O codigo nao pode ficar vazio.");
-            return;
-        }
-
-        if (escolha == 1 && !codigo.matches("\\d{11,12}")) {
-            System.out.println("UPC-A precisa ter 11 ou 12 digitos numericos.");
-            return;
-        }
-        if (escolha == 2 && !codigo.matches("\\d{12,13}")) {
-            System.out.println("EAN13 precisa ter 12 ou 13 digitos numericos.");
-            return;
-        }
-        if (escolha == 3 && !codigo.matches("\\d{7,8}")) {
-            System.out.println("EAN8 precisa ter 7 ou 8 digitos numericos.");
-            return;
-        }
-
-        if (escolha == 5 && !codigo.startsWith("{")) {
-            codigo = "{A" + codigo;
-        }
-
         try {
+
             int retorno = ImpressoraDLL.INSTANCE.ImpressaoCodigoBarras(
-                    tipoDll, codigo, 100, 2, 2
+                    2, "123456789012", 100, 2, 2
             );
 
             if (retorno == 0) {
@@ -268,9 +226,7 @@ public class Impressora {
         try {
             String xml = Files.readString(Paths.get(caminhoXmlCancelamento));
 
-            int retorno = ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(
-                    xml, assQRCode, 0
-            );
+            int retorno = ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(xml, assQRCode, 0);
 
             if (retorno == 0) {
                 ImpressoraDLL.INSTANCE.Corte(5);
@@ -293,7 +249,7 @@ public class Impressora {
         }
 
         try {
-            int retorno = ImpressoraDLL.INSTANCE.AbreGaveta(0, 50, 50);
+            int retorno = ImpressoraDLL.INSTANCE.AbreGaveta(1, 5, 10);
 
             if (retorno == 0) {
                 System.out.println("Gaveta aberta!");
@@ -344,6 +300,9 @@ public class Impressora {
             } else {
                 System.out.println("Erro ao avancar papel: " + retorno);
             }
+
+        } catch (UnsatisfiedLinkError e) {
+            System.out.println("Nao foi possivel carregar a DLL Elgin: " + e.getMessage());
 
         } catch (Exception e) {
             System.out.println("Erro ao avancar papel: " + e.getMessage());
