@@ -5,7 +5,9 @@
 ## 📘 Sobre o Projeto
 
 *(Explique em 3 a 5 linhas o que o sistema faz, quem desenvolveu e em qual disciplina.)*
-Exemplo: Este projeto foi desenvolvido por alunos para se comunicar com uma impressora térmica **Elgin i8/i9** usando a biblioteca `E1_Impressora01.dll`. O sistema tem login e um menu com operações de impressão. Faz parte da disciplina de **Programação Orientada a Objetos**.
+Exemplo: Este projeto foi desenvolvido por alunos para se comunicar com uma impressora térmica **Elgin i8/i9** 
+usando a biblioteca `E1_Impressora01.dll`. O sistema tem login e um menu com operações de impressão. 
+Faz parte da disciplina de **Programação Orientada a Objetos**.
 
 ---
 
@@ -80,7 +82,7 @@ Exemplo: Este projeto foi desenvolvido por alunos para se comunicar com uma impr
 ---
 
 ## 👥 Autores
-*(em ordem alfabética)*
 
-- Nome Completo
-- Nome Completo
+- Beatriz Rodrigues
+- Davidson Alex Camargo
+- Gustavo Constantino
