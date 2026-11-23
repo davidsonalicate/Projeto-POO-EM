@@ -20,7 +20,7 @@ O projeto faz parte da disciplina de **Programação Orientada a Objetos**, mini
 - **IntelliJ IDEA**
 - **JNA 5.15.0** (comunicação com a DLL)
 - **DLL E1_Impressora01** (SDK da Elgin)
-- **Impressora Elgin i8 ou i9**
+- **Impressora Elgin i9**
 
 ---
 
@@ -28,7 +28,8 @@ O projeto faz parte da disciplina de **Programação Orientada a Objetos**, mini
 
 ```
 /src                          → Código-fonte
-   Main.java                  → Inicia o programa: cadastro, login e menu principal
+   Main.java                  → Aparece as opções de cadastro e o menu da impressora
+   Menu.java                  → Inicia o programa: cadastro, login e menu principal
    Usuario.java               → Guarda nome e senha e verifica o login
    Impressora.java            → Configura a conexão e executa cada operação da impressora
    ImpressoraDLL.java         → Interface JNA que mapeia as funções da DLL Elgin
@@ -71,7 +72,7 @@ São permitidas até **três tentativas** de acesso. Caso o usuário erre as inf
 ## 📋 Funcionalidades do Menu
 
 | Opção | O que faz |
-|---|---|
+
 | 1 | Configura a conexão: tipo, modelo, porta e parâmetro (tipo e parâmetro devem ser numéricos) |
 | 2 | Abre a conexão com a impressora (exige configuração prévia) |
 | 3 | Fecha a conexão com a impressora |
@@ -91,8 +92,6 @@ As opções de impressão, gaveta, bip, avanço de papel e status só funcionam 
 ---
 
 ## 🧪 Testes Realizados
-
-*(Ajuste esta lista com o que vocês realmente testaram na impressora.)*
 
 | Teste | Resultado esperado |
 |---|---|
@@ -120,6 +119,6 @@ As opções de impressão, gaveta, bip, avanço de papel e status só funcionam 
 
 ## 👥 Autores
 
-- Beatriz Rodrigues
-- Davidson Alex Camargo
-- Gustavo Constantino
+- Beatriz Souza
+- Davidson Alex Camargo dos Santos Alicate
+- Gustavo Moreira
