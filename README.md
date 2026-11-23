@@ -4,11 +4,13 @@
 
 ## 📘 Sobre o Projeto
 
-Este projeto foi desenvolvido por alunos para se comunicar com uma impressora térmica **Elgin i8/i9** usando a biblioteca `E1_Impressora01.dll`, acessada em Java por meio do JNA.
+Este projeto foi desenvolvido pelos alunos Beatriz, Davidson e Gustavo, com o objetivo de estabelecer uma comunicação entre o computador e uma impressora térmica **Elgin i8/i9**, utilizando a biblioteca **E1_Impressora01.dll**, acessada em Java por meio do JNA.
 
-O sistema começa com um cadastro de usuário e um login (até 3 tentativas). Depois do acesso liberado, abre um menu de console com 13 opções: configurar, abrir e fechar a conexão, imprimir texto, QR Code, código de barras e XMLs SAT, abrir a gaveta, emitir bip, avançar papel e consultar o status.
+O sistema inicia com o cadastro de um novo usuário e, em seguida, solicita o login utilizando os dados cadastrados. Caso o usuário erre a senha, são permitidas até **três tentativas** de acesso.
 
-Faz parte da disciplina de **Programação Orientada a Objetos**.
+Após a liberação do acesso, é apresentado um menu no console com opções para configurar e controlar a impressora, realizar impressões de textos, QR Codes, códigos de barras e XMLs, além de executar funções como abrir a gaveta, emitir bipes, avançar o papel e consultar o status da impressora.
+
+O projeto faz parte da disciplina de **Programação Orientada a Objetos**, ministrada pelo professor Richard.
 
 ---
 
@@ -57,12 +59,13 @@ Faz parte da disciplina de **Programação Orientada a Objetos**.
 
 ## 🔐 Login
 
-O sistema não tem usuário fixo. A cada execução, o programa pede para **criar um nome de usuário e uma senha** (cadastro) e em seguida pede esses mesmos dados para o login.
+O sistema não possui um usuário ou senha predefinidos. Por isso, sempre que o programa é iniciado, é solicitado que o usuário realize um cadastro, **criando seu próprio nome de usuário e senha.**
 
-- São permitidas **3 tentativas**.
-- Ao errar 3 vezes, o sistema exibe "Voce errou 3 vezes. Sistema encerrado." e fecha.
-- O cadastro fica apenas em memória, então é perdido quando o programa termina.
+Após o cadastro, o sistema solicita novamente essas informações para realizar o login. Os dados digitados devem ser iguais aos cadastrados anteriormente.
 
+São permitidas até **três tentativas** de acesso. Caso o usuário erre as informações nas três tentativas, o sistema apresenta uma mensagem informando que o limite foi atingido e encerra a execução do programa.
+
+**Observação: Os dados do cadastro ficam armazenados apenas na memória durante a execução do programa. Portanto, quando o sistema é encerrado, essas informações são perdidas.**
 ---
 
 ## 📋 Funcionalidades do Menu
