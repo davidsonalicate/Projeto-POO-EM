@@ -271,7 +271,7 @@ public class Impressora {
         int quantidade = lerInteiro(sc, "Quantidade de bips (1 a 63): ", 1, 63);
 
         try {
-            int retorno = ImpressoraDLL.INSTANCE.SinalSonoro(quantidade, 50, 5);
+            int retorno = ImpressoraDLL.INSTANCE.SinalSonoro(quantidade, 5, 5);
 
             if (retorno == 0) {
                 System.out.println("Bip!");
